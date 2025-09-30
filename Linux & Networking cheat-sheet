@@ -1,0 +1,39 @@
+Basic filesystem & permissions
+
+ls -lah, cd /path, pwd, mkdir -p foo, rm -rf foo
+cp -r, mv, stat file, file file
+chmod u+x script.sh, chmod 644 file, chown user:group file
+
+
+Process & services
+
+ps aux | grep <name>
+top / htop
+systemctl status ssh, journalctl -u <svc>
+kill <pid>, kill -9 <pid>
+Package management (Debian/Ubuntu/Kali)
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y <package>
+
+
+Networking basics
+
+ip a (interfaces), ip route (routes)
+ss -tuln (listening sockets), ss -tnp (TCP connections + PID)
+netstat -tnlp (if installed)
+arp -a, ping <ip>, traceroute <ip>
+tcpdump -i any -n -s 0 -w capture.pcap (requires sudo)
+tshark -r capture.pcap -T fields -e ... (analyze)
+
+
+File transfer & simple servers
+
+python3 -m http.server 8000 (serve directory)
+nc -l -p 4444 (netcat listener) / nc <ip> 4444 (connect)
+
+
+Log inspection
+
+tail -f /var/log/syslog
+less /var/log/auth.log
+grep -E "ERROR|Failed|Denied" /var/log/*.log
