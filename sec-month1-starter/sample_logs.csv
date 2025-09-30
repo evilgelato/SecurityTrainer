@@ -1,0 +1,4 @@
+timestamp,src_ip,dest_ip,method,path,status,user_agent
+2025-09-01T10:21:00,192.168.56.10,192.168.56.11,GET,/index.html,200,"curl/7.68.0"
+2025-09-01T10:21:03,10.0.0.5,192.168.56.11,POST,/login,401,"Mozilla/5.0"
+2025-09-01T10:22:10,192.168.56.10,192.168.56.11,GET,/admin,404,"curl/7.68.0"

@@ -1,0 +1,19 @@
+# target-ubuntu/Vagrantfile — single Ubuntu focal VM as a lab target
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.define "target" do |vm|
+    vm.vm.box = "ubuntu/focal64"
+    vm.vm.hostname = "target-ubuntu"
+    vm.vm.network "private_network", ip: "192.168.56.20"
+    vm.vm.provider "virtualbox" do |vb|
+      vb.memory = 2048
+      vb.cpus = 2
+      vb.customize ["modifyvm", :id, "--ioapic", "on"]
+    end
+    vm.vm.provision "shell", path: "provision_target.sh"
+  end
+
+  # Share repo root with VM (optional)
+  config.vm.synced_folder "..", "/vagrant_repo", disabled: false
+end
